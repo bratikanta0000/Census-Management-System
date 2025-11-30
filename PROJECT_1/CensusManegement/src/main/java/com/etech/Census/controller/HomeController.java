@@ -45,8 +45,9 @@ public class HomeController {
 	  @GetMapping("/admin-register") 
 	  public String AdminNewUser() {
 	  
-	  return "/admin-register"; }
+	  return "admin-register"; }
 	
      
     
 }
+
