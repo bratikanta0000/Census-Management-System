@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Details Form</title>
+    <link rel="stylesheet" href="/css/newuser.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Admin Details</h1>
+
+        <!-- ✅ Only ONE form -->
+        <form action="/register/new" method="post">
+
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="workerId">Admin ID</label>
+                <input type="text" id="adminid" name="adminid" placeholder="Enter admin ID" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+            </div>
+            <div class="form-group">
+              <label for="adminDesignation">Admin Designation</label>
+              <select id="adminDesignation" name="adminDesignation" required>
+                   <option value="" disabled selected>Select Designation</option>   
+                   <option value="STATE_ADMIN">STATE ADMINISTRATOR</option>
+                   <option value="COLLECTOR">COLLECTOR</option>
+                   <option value="SUB_COLLECTOR">SUB COLLECTOR</option>
+                   <option value="DEO">DEO</option>
+                   <option value="BEO">BEO</option>
+                   <option value="CDPO">CDPO</option>
+             </select>
+          </div>
+            
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chhattisgarh">Chhattisgarh</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamil-nadu">Tamil Nadu</option>
+                    <option value="telangana">Telangana</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="west-bengal">West Bengal</option>
+                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="dadra-nagar-haveli-daman-diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="jammu-kashmir">Jammu and Kashmir</option>
+                    <option value="ladakh">Ladakh</option>
+                    <option value="lakshadweep">Lakshadweep</option>
+                    <option value="puducherry">Puducherry</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="district">District</label>
+                <input type="text" id="district" name="district" placeholder="Enter district name" required>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+
+        </form>
+        <!-- end form -->
+
+    </div>
+
+</body>
+</html>

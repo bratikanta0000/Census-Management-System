@@ -1,0 +1,89 @@
+/* Anganwadi Login Page CSS */
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(to right, #004080, #0073e6);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-container {
+    background: #ffffff;
+    width: 350px;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.login-container h2 {
+    color: #003366;
+    margin-bottom: 5px;
+}
+
+.subtitle {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 20px;
+}
+
+.login-form {
+    text-align: left;
+}
+
+.login-form label {
+    font-weight: bold;
+    color: #003366;
+}
+
+.login-form input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.login-btn {
+	display: block;
+	margin: 0 auto;
+	text-align: center; 
+    width: 90%;
+    padding: 10px;
+    background: #0073e6;
+    color: white;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: 0.3s;
+    font-weight: bold;
+    
+}
+
+.login-btn:hover {
+    background: #005bb5;
+}
+
+.links {
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.links a {
+    font-size: 14px;
+    color: #003366;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.links a:hover {
+    color: #ff9900;
+}
