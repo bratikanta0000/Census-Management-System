@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLO Details Form</title>
+    <link rel="stylesheet" href="/css/newuser.css">
+</head>
+<body>
+    <div class="container">
+        <h1>VLO Details</h1>
+
+        <!-- ✅ Only ONE form -->
+        <form action="/register/new/user" method="post">
+
+            <div class="form-group">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" name="fullName" placeholder="Enter full name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="workerId">VLO ID</label>
+                <input type="text" id="workerId" name="workerId" placeholder="Enter vlo ID" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="confirmPassword">Confirm Password</label>
+                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="Confirm password" required>
+            </div>
+
+            <div class="form-group">
+                <label for="state">State</label>
+                <select id="state" name="state" required>
+                    <option value="" disabled selected>Select State</option>
+                    <option value="andhra-pradesh">Andhra Pradesh</option>
+                    <option value="arunachal-pradesh">Arunachal Pradesh</option>
+                    <option value="assam">Assam</option>
+                    <option value="bihar">Bihar</option>
+                    <option value="chhattisgarh">Chhattisgarh</option>
+                    <option value="goa">Goa</option>
+                    <option value="gujarat">Gujarat</option>
+                    <option value="haryana">Haryana</option>
+                    <option value="himachal-pradesh">Himachal Pradesh</option>
+                    <option value="jharkhand">Jharkhand</option>
+                    <option value="karnataka">Karnataka</option>
+                    <option value="kerala">Kerala</option>
+                    <option value="madhya-pradesh">Madhya Pradesh</option>
+                    <option value="maharashtra">Maharashtra</option>
+                    <option value="manipur">Manipur</option>
+                    <option value="meghalaya">Meghalaya</option>
+                    <option value="mizoram">Mizoram</option>
+                    <option value="nagaland">Nagaland</option>
+                    <option value="odisha">Odisha</option>
+                    <option value="punjab">Punjab</option>
+                    <option value="rajasthan">Rajasthan</option>
+                    <option value="sikkim">Sikkim</option>
+                    <option value="tamil-nadu">Tamil Nadu</option>
+                    <option value="telangana">Telangana</option>
+                    <option value="tripura">Tripura</option>
+                    <option value="uttar-pradesh">Uttar Pradesh</option>
+                    <option value="uttarakhand">Uttarakhand</option>
+                    <option value="west-bengal">West Bengal</option>
+                    <option value="andaman-nicobar">Andaman and Nicobar Islands</option>
+                    <option value="chandigarh">Chandigarh</option>
+                    <option value="dadra-nagar-haveli-daman-diu">Dadra and Nagar Haveli and Daman and Diu</option>
+                    <option value="delhi">Delhi</option>
+                    <option value="jammu-kashmir">Jammu and Kashmir</option>
+                    <option value="ladakh">Ladakh</option>
+                    <option value="lakshadweep">Lakshadweep</option>
+                    <option value="puducherry">Puducherry</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="district">District</label>
+                <select id="district" name="district" required>
+                    <option value="" disabled selected>Select District</option>
+                    <option value="angul">Angul</option>
+                    <option value="balangir">Balangir</option>
+                    <option value="balasore">Balasore</option>
+                    <option value="bargarh">Bargarh</option>
+                    <option value="bhadrak">Bhadrak</option>
+                    <option value="boudh">Boudh</option>
+                    <option value="cuttack">Cuttack</option>
+                    <option value="deogarh">Deogarh</option>
+                    <option value="dhenkanal">Dhenkanal</option>
+                    <option value="gajapati">Gajapati</option>
+                    <option value="ganjam">Ganjam</option>
+                    <option value="jagatsinghpur">Jagatsinghpur</option>
+                    <option value="jajpur">Jajpur</option>
+                    <option value="jharsuguda">Jharsuguda</option>
+                    <option value="kalahandi">Kalahandi</option>
+                    <option value="kandhamal">Kandhamal</option>
+                    <option value="kendrapara">Kendrapara</option>
+                    <option value="kendujhar">Kendujhar</option>
+                    <option value="khordha">Khordha</option>
+                    <option value="koraput">Koraput</option>
+                    <option value="malkangiri">Malkangiri</option>
+                    <option value="mayurbhanj">Mayurbhanj</option>
+                    <option value="nabarangpur">Nabarangpur</option>
+                    <option value="nayagarh">Nayagarh</option>
+                    <option value="nuapada">Nuapada</option>
+                    <option value="puri">Puri</option>
+                    <option value="rayagada">Rayagada</option>
+                    <option value="sambalpur">Sambalpur</option>
+                    <option value="subarnapur">Subarnapur</option>
+                    <option value="sundargarh">Sundargarh</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="awwCentreCode">VLO Code</label>
+                <select id="awwCentreCode" name="awwCentreCode" required>
+                    <option value="" disabled selected>Select Centre</option>
+                    <option value="code-001">AWC Code 001</option>
+                    <option value="code-002">AWC Code 002</option>
+                    <option value="code-003">AWC Code 003</option>
+                    <option value="code-004">AWC Code 004</option>
+                    <option value="code-005">AWC Code 005</option>
+                    <option value="code-006">AWC Code 006</option>
+                    <option value="code-007">AWC Code 007</option>
+                    <option value="code-008">AWC Code 008</option>
+                    <option value="code-009">AWC Code 009</option>
+                    <option value="code-010">AWC Code 010</option>
+                </select>
+            </div>
+
+            <button type="submit" class="submit-button">Submit</button>
+
+        </form>
+        <!-- end form -->
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="/css/admindashboard.css">
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+    <h2>Dashboard</h2>
+    <ul>
+        <li>Dashboard</li>
+        <li><a href="/new_reg_form">Add Household</a></li>
+        <li><a href="/new_reg_form">Add Members</a></li>
+        <li>View All Households</li>
+        <li>View All Members</li>
+        <li>Reports</li>
+        <li><a href="/admin-login">Logout</a></li>
+    </ul>
+</aside>
+
+
+        <main class="main-content">
+            <header class="header">
+                <h1>Welcome, To Admin Dashboard</h1>
+                <div id="clock" style="font-size:18px; margin-top:10px;"></div>
+
+                           <script>
+                             function realtimeClock() {
+                             const now = new Date();
+                             const date = now.toLocaleDateString();
+                             const time = now.toLocaleTimeString();
+
+                             document.getElementById("clock").innerHTML = 
+                             "📅 " + date + " | ⏰ " + time;
+                            }
+
+                            setInterval(realtimeClock, 1000);
+                            realtimeClock();
+                            </script>
+              
+                <div class="header-right">
+                    <a href="/admin-login">
+                    <button class="logout-btn">Logout</button></a>
+                    <br>
+                     </div>
+                          
+            </header> <br>
+            <br>
+           
+
+            <section class="cards">
+            
+                <div class="card yellow">
+                <h3>Total Admin Officer</h3>
+                 <b th:text="${totalAdmins}">0</b>
+                </div>
+            <div class="card pink">
+                    <h3>Total VLO Officer</h3>
+                   <b th:text="${totalVlo}">0</b>
+
+                    
+                    
+                </div>
+                <div class="card teal">
+                    <h3>Total No. Of People</h3>
+                    <b th:text="${totalPeople}">0</b>
+                </div>
+                <div class="card blue">
+                    <h3>Total Households</h3>
+                    <b th:text="${totalHouseholds}">0</b>
+                
+                </div>
+                <div class="card green">
+                    <h3>Total Members</h3>
+                      <b th:text="${totalMembers}">0</b>
+                   
+               <!--  </div>
+                <div class="card orange">
+                    <h3>District Wise Total Households</h3>
+                    <p>12</p>
+                </div>
+                <div class="card purple">
+                    <h3>District Wise Total Members</h3>
+                    <p>5</p>
+                </div>
+                
+                <div class="card lightgreen">
+                    <h3>Block Wise Total Households</h3>
+                    <p>12</p>
+                </div>
+                <div class="card lightred">
+                    <h3>District Wise Total Members</h3>
+                    <p>5</p>
+                </div>
+                 -->
+   
+                
+            </section>
+
+            <div class="buttons">
+            <a href="/new_reg_form">
+                <button class="add-btn">Add New Household</button></a>	
+              <a href="/new_reg_form">   
+                <button class="add-btn">Add New Member</button></a>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

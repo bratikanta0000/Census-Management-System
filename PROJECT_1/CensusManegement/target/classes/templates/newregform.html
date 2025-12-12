@@ -1,0 +1,478 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>India Census  Data Collection Form</title>
+  <style>
+    :root {
+      --accent: #0b67b2;
+      --muted: #666;
+    }
+
+    /* ---------- Global Styles ---------- */
+    body {
+      font-family: Inter, system-ui, -apple-system, Arial, sans-serif;
+      margin: 0;
+      background: #f7fafc;
+      color: #0b1220;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 28px auto;
+      padding: 20px;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 6px 24px rgba(10, 20, 30, 0.06);
+    }
+
+    h1, h2 { margin: 0 0 12px; }
+
+    .grid { display: grid; gap: 12px; }
+    .row-2 { grid-template-columns: repeat(2, 1fr); }
+
+    label {
+      display: block;
+      font-size: 13px;
+      margin-bottom: 6px;
+      color: var(--muted);
+    }
+
+    input[type=text],
+    input[type=number],
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #e6e9ee;
+      border-radius: 8px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+
+    .section {
+      padding: 14px;
+      border-radius: 8px;
+      background: #fbfcfe;
+      border: 1px solid #eef2f6;
+      margin-bottom: 16px;
+    }
+
+    .muted { font-size: 13px; color: var(--muted); }
+
+   /* Primary Button */
+.btn {
+    background: #003366;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+    justify-content: center;
+}
+
+.btn:hover {
+    background: #0055a5;
+}
+
+
+
+
+/* Ghost Button (Reset) */
+.btn-ghost {
+    background: transparent;
+    color: #003366;
+    padding: 10px 20px;
+    border: 2px solid #003366;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-ghost:hover {
+    background: #003366;
+    color: white;
+}
+
+
+    .members { margin-top: 10px; }
+
+    .member-card {
+      border: 1px dashed #e3e8f0;
+      padding: 12px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      background: #fff;
+    }
+
+    .actions { display: flex; gap: 8px; align-items: center; }
+
+    pre { background:#0b122022; padding:10px; border-radius:6px; overflow:auto }
+    footer { font-size:13px; color:var(--muted); text-align:center; margin-top:12px }
+    @media (max-width:700px){.row-2{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>India Census — Data Collection Form</h1>
+    <p class="muted">Combined House Listing & Population Enumeration template. Use the <strong>"Add Household Member"</strong> button to record individuals.</p>
+
+    <form id="censusForm" action="/api/census/save" method="POST">
+
+      <!-- Household Details -->
+      <section class="section">
+        <h2>Household / Housing Details</h2>
+        <div class="grid row-2">
+          <div>
+            <label>Household ID (local)</label>
+            <input type="text" id="householdId" name="household.householdId" placeholder="e.g., H-001" required />
+          </div>
+          <div>
+            <label>Head of Household (Name)</label>
+            <input type="text" id="headName" name="household.headName" placeholder="Full name" required />
+          </div>
+          <div>
+            <label>Aadhar Card No</label>
+            <input type="text" id="aadharno" name="household.aadharno" placeholder="Aadhar Card No" required maxlength="12"/>
+          </div>
+          <div>
+            <label>Age of Household</label>
+            <input type="number" id="age" name="household.age" placeholder="Age of Household" required />
+          </div>
+        </div>
+
+        <!-- Address -->
+        <h3 style="margin-top:12px;margin-bottom:6px">Address</h3>
+        <div class="grid row-2">
+          <div>
+            <label>State</label>
+            <input type="text" id="state" name="household.state" placeholder="State (e.g., Odisha)" />
+          </div>
+          <div>
+            <label>District</label>
+            <input type="text" id="district" name="household.district" placeholder="District" />
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Sub-district / Tehsil</label>
+            <input type="text" id="subdistrict" name="household.subdistrict" placeholder="Tehsil / Taluk" />
+          </div>
+          <div>
+            <label>Village / Town</label>
+            <input type="text" id="villageTown" name="household.villageTown" placeholder="Village or Town" />
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Ward / Block</label>
+            <input type="text" id="wardBlock" name="household.wardBlock" placeholder="Ward or Block (if any)" />
+          </div>
+          <div>
+            <label>PIN Code</label>
+            <input type="text" id="pincode" name="household.pincode" placeholder="6-digit PIN code" maxlength="6"/>
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>House / Building No.</label>
+            <input type="text" id="houseNo" name="household.houseNo" placeholder="House or building number" />
+          </div>
+          <div>
+            <label>Street / Locality</label>
+            <input type="text" id="street" name="household.street" placeholder="Street, colony or locality" />
+          </div>
+        </div>
+
+        <!-- Other details -->
+        <div class="grid row-2" style="margin-top:12px">
+          <div>
+            <label>Type of House</label>
+            <select id="houseType" name="household.houseType">
+              <option value="pucca">Pucca</option>
+              <option value="kutcha">Kutcha</option>
+              <option value="semi-pucca">Semi-pucca</option>
+            </select>
+          </div>
+          <div>
+            <label>Ownership Status</label>
+            <select id="ownership" name="household.ownership">
+              <option value="owned">Owned</option>
+              <option value="rented">Rented</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Number of Rooms</label>
+            <input type="number" id="numRooms" name="household.numRooms" min="0" />
+          </div>
+          <div>
+            <label>Toilet Facility</label>
+            <select id="toiletType" name="household.toiletType">
+              <option value="private">Private</option>
+              <option value="shared">Shared</option>
+              <option value="open">Open defecation</option>
+              <option value="none">None</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Drinking Water Source</label>
+            <select id="waterSource" name="household.waterSource">
+              <option>Tap (piped)</option>
+              <option>Hand pump</option>
+              <option>Tube well</option>
+              <option>Open well</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div>
+            <label>Electricity Available?</label>
+            <select id="electricity" name="household.electricity">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Kitchen Available?</label>
+            <select id="kitchen" name="household.kitchen">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Cooking Fuel</label>
+            <select id="cookingFuel" name="household.cookingFuel">
+              <option>LPG</option>
+              <option>Firewood</option>
+              <option>Kerosene</option>
+              <option>Electric</option>
+              <option>Other</option>
+            </select>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- Amenities & Assets -->
+      <section class="section">
+        <h2>Household Amenities & Assets</h2>
+        <div class="grid row-2">
+          <div>
+            <label>Has Refrigerator?</label>
+            <select id="fridge" name="household.fridge">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Has TV?</label>
+            <select id="tv" name="household.tv">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Internet Connection?</label>
+            <select id="internet" name="household.internet">
+              <option value="yes">Yes</option>
+              <option value="no">No</option>
+            </select>
+          </div>
+          <div>
+            <label>Vehicle Ownership</label>
+            <input type="text" id="vehicle" name="household.vehicle" placeholder="e.g., 1 two-wheeler, 0 four-wheeler" />
+          </div>
+        </div>
+      </section>
+
+      <!-- Members -->
+      <section class="section">
+        <h2>Household Members (Population Enumeration)</h2>
+        <p class="muted">Add one card per family member. You can export collected data as JSON when finished.</p>
+
+        <div id="members" class="members"></div>
+
+        <div class="actions" style="margin-top:8px">
+          <button type="button" class="btn" onclick="addMember()">+ Add Household Member</button>
+          <button type="button" class="btn-ghost" onclick="clearMembers()">Clear Members</button>
+        </div>
+
+      </section>
+
+      <div style="display:flex;gap:8px;align-items:center; margin-top:10px">
+        <button type="submit" class="btn">Save</button>
+        <button type="button" class="btn-ghost" onclick="resetForm()">Reset Form</button>
+      </div>
+
+    </form>
+
+    
+
+    <footer>Template: household + population fields commonly captured in India Census.</footer>
+  </div>
+
+  <script>
+    let memberCount = 0;
+
+    function addMember(data = {}) {
+      const index = memberCount++;
+      const container = document.getElementById("members");
+      const card = document.createElement("div");
+      card.className = "member-card";
+
+      card.innerHTML = `
+        <div style="display:flex;justify-content:space-between;align-items:center">
+          <strong>Member ${index + 1}</strong>
+          <button type="button" class="btn-ghost" onclick="this.closest('.member-card').remove()">Remove</button>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Full Name</label>
+            <input type="text" name="members[${index}].name" value="${data.name||''}" required>
+          </div>
+          <div>
+            <label>Aadhar Card Number</label>
+            <input type="text" name="members[${index}].aadharNo" value="${data.aadharNo||''}" maxlength="12">
+          </div>
+          <div>
+            <label>Relationship to Head</label>
+            <input type="text" name="members[${index}].relation" value="${data.relation||''}">
+          </div>
+          <div>
+            <label>Gender</label>
+            <select name="members[${index}].gender">
+              <option ${data.gender==='M'?'selected':''}>M</option>
+              <option ${data.gender==='F'?'selected':''}>F</option>
+              <option ${data.gender==='Other'?'selected':''}>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Age</label>
+            <input type="number" name="members[${index}].age" min="0" value="${data.age||''}">
+          </div>
+          <div>
+            <label>Disability</label>
+            <input type="text" name="members[${index}].disability" value="${data.disability||''}">
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Marital Status</label>
+            <select name="members[${index}].marital">
+              <option ${data.marital==='Never married'?'selected':''}>Never married</option>
+              <option ${data.marital==='Married'?'selected':''}>Married</option>
+              <option ${data.marital==='Widowed'?'selected':''}>Widowed</option>
+              <option ${data.marital==='Divorced'?'selected':''}>Divorced</option>
+            </select>
+          </div>
+          <div>
+            <label>Mother Tongue</label>
+            <input type="text" name="members[${index}].language" value="${data.language||''}">
+          </div>
+        </div>
+        <div class="grid row-2" style="margin-top:10px">
+          <div>
+            <label>Education Level</label>
+            <input type="text" name="members[${index}].education" value="${data.education||''}">
+          </div>
+          <div>
+            <label>Employment Status</label>
+            <input type="text" name="members[${index}].employment" value="${data.employment||''}">
+          </div>
+        </div>
+      `;
+
+      container.appendChild(card);
+    }
+
+    function clearMembers() {
+      document.getElementById('members').innerHTML = '';
+      memberCount = 0;
+    }
+
+    function collectData() {
+      const house = {
+        householdId: document.getElementById('householdId').value,
+        headName: document.getElementById('headName').value,
+        aadharno: document.getElementById('aadharno').value,
+        age: document.getElementById('age').value,
+        address: {
+          state: document.getElementById('state').value,
+          district: document.getElementById('district').value,
+          subdistrict: document.getElementById('subdistrict').value,
+          villageTown: document.getElementById('villageTown').value,
+          wardBlock: document.getElementById('wardBlock').value,
+          pincode: document.getElementById('pincode').value,
+          houseNo: document.getElementById('houseNo').value,
+          street: document.getElementById('street').value
+        },
+        houseType: document.getElementById('houseType').value,
+        ownership: document.getElementById('ownership').value,
+        numRooms: document.getElementById('numRooms').value,
+        toiletType: document.getElementById('toiletType').value,
+        waterSource: document.getElementById('waterSource').value,
+        electricity: document.getElementById('electricity').value,
+        kitchen: document.getElementById('kitchen').value,
+        cookingFuel: document.getElementById('cookingFuel').value,
+        assets: {
+          fridge: document.getElementById('fridge').value,
+          tv: document.getElementById('tv').value,
+          internet: document.getElementById('internet').value,
+          vehicle: document.getElementById('vehicle').value
+        }
+      };
+
+      const members = [];
+      document.querySelectorAll('.member-card').forEach(card => {
+        const m = {};
+        m.name = card.querySelector('input[name$=".name"]').value;
+        m.aadharNo = card.querySelector('input[name$=".aadharNo"]').value;
+        m.relation = card.querySelector('input[name$=".relation"]').value;
+        m.gender = card.querySelector('select[name$=".gender"]').value;
+        m.age = card.querySelector('input[name$=".age"]').value;
+        m.disability = card.querySelector('input[name$=".disability"]').value;
+        m.marital = card.querySelector('select[name$=".marital"]').value;
+        m.language = card.querySelector('input[name$=".language"]').value;
+        m.education = card.querySelector('input[name$=".education"]').value;
+        m.employment = card.querySelector('input[name$=".employment"]').value;
+        members.push(m);
+      });
+
+      return { household: house, members, exportedAt: new Date().toISOString() };
+    }
+
+
+    function resetForm() {
+      if (confirm('Reset the entire form?')) {
+        document.getElementById('censusForm').reset();
+        clearMembers();
+        document.getElementById('output').style.display = 'none';
+      }
+    }
+
+    // Initialize form
+    addMember({ name: '', relation: 'Head', age: '', gender: 'M' });
+    document.getElementById('censusForm').addEventListener('submit', handleSubmit);
+
+  </script>
+</body>
+</html>
